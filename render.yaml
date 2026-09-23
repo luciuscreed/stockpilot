@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: stockpilot
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: ALPHAVANTAGE_API_KEY
+        sync: false
+      - key: STOCKPILOT_FRONTEND_ORIGIN
+        value: "*"
